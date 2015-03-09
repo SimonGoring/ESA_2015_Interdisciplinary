@@ -12,6 +12,8 @@ if('all.messages.RDS' %in% list.files('data')){
 #  to parse all the messages.  The list contains two items, a subject line and
 #  the message text proper, so we need to select every other object:
 aa <- unlist(lapply(all.messages, function(x)lapply(x, function(x)ifelse(length(x)>1,x[[2]],NA))))
+subjects <- unlist(lapply(all.messages, function(x)lapply(x, function(x)ifelse(length(x)>1,x[[1]],NA))))
+
 
 tm.corp <- Corpus(VectorSource(aa))
 
